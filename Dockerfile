@@ -39,7 +39,7 @@ RUN apt-get -qq -y install doxygen mkdocs graphviz
 # RUN install-*/install-tl --profile=texlive.profile
 # RUN rm -rf install-tl*
 
-RUN apt-get install texlive
+RUN apt-get -qq -y install texlive
 
 # Export useful texlive paths
 # ENV PATH /opt/texbin:$PATH
