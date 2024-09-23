@@ -30,5 +30,4 @@ stop:
 rm:
 	docker rm $(NAME)
 
-default: 
-	build
+all: build
