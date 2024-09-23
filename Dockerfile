@@ -33,16 +33,17 @@ RUN echo "pandoc version $(pandoc --version) running"
 RUN apt-get -qq -y install doxygen mkdocs graphviz
 
 # Install latest TexLive
-RUN wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-RUN tar -zxvf install-tl-unx.tar.gz
-COPY texlive.profile .
-RUN install-*/install-tl --profile=texlive.profile
-RUN rm -rf install-tl*
+# RUN wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+# RUN tar -zxvf install-tl-unx.tar.gz
+# COPY texlive.profile .
+# RUN install-*/install-tl --profile=texlive.profile
+# RUN rm -rf install-tl*
 
+RUN apt-get install texlive
 
 # Export useful texlive paths
-ENV PATH /opt/texbin:$PATH
-ENV PATH /usr/local/texlive/2020/bin/x86_64-linux:$PATH
+# ENV PATH /opt/texbin:$PATH
+# ENV PATH /usr/local/texlive/2020/bin/x86_64-linux:$PATH
 
 # Update texlive and texlive manager to the absolute
 RUN tlmgr update --self --all
