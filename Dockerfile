@@ -26,8 +26,8 @@ RUN pip3 install pandoc-fignos pandoc-eqnos pandoc-tablenos
 RUN wget https://github.com/jgm/pandoc/releases/download/$pandoc_ver/pandoc-$pandoc_ver-1-amd64.deb -O pandoc.deb
 RUN dpkg -i pandoc.deb && rm pandoc.deb
 
-# Verify installation
-RUN pandoc --version
+# Log what version of pandoc we're running on
+RUN echo "pandoc version $(pandoc --version) running"
 
 # Popular documentation generator
 RUN apt-get -qq -y install doxygen mkdocs graphviz
@@ -40,21 +40,24 @@ RUN install-*/install-tl --profile=texlive.profile
 RUN rm -rf install-tl*
 
 
-#Export useful texlive paths
+# Export useful texlive paths
 ENV PATH /opt/texbin:$PATH
 ENV PATH /usr/local/texlive/2020/bin/x86_64-linux:$PATH
 
-#Update texlive and texlive manager to the absolute
+# Update texlive and texlive manager to the absolute
 RUN tlmgr update --self --all
 
-#Install pygments for minted
+# Install pygments for minted
 RUN pip3 install pygments
 
 # Test Latex
 COPY examples/small2e.tex small2e.tex
-RUN latex  small2e.tex
-RUN pdflatex  small2e.tex
+RUN latex small2e.tex
+RUN pdflatex small2e.tex
 RUN xelatex small2e.tex
 
-RUN  rm -rf /var/lib/apt/lists/*
+RUN rm -rf /var/lib/apt/lists/*
 RUN rm -rf /root/*
+
+# "jshell" is an interactive REPL for Java (see https://en.wikipedia.org/wiki/JShell)
+CMD ["jshell"]
