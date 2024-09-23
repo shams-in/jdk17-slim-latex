@@ -12,6 +12,7 @@ push:
 	docker push $(NS)/$(REPO)
 
 build:
+	git pull
 	docker build -t $(NS)/$(REPO) .
 
 shell:
@@ -29,4 +30,5 @@ stop:
 rm:
 	docker rm $(NAME)
 
-default: build
+default: 
+	build
