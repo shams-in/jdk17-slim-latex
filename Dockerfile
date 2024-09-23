@@ -46,10 +46,10 @@ RUN apt-get -qq -y install texlive
 # ENV PATH /usr/local/texlive/2020/bin/x86_64-linux:$PATH
 
 # Update texlive and texlive manager to the absolute
-RUN tlmgr update --self --all
+# RUN tlmgr update --self --all
 
 # Install pygments for minted
-RUN pip3 install pygments
+# RUN pip3 install pygments
 
 # Test Latex
 COPY examples/small2e.tex small2e.tex
