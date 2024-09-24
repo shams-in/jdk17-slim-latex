@@ -8,9 +8,6 @@ WORKDIR /root
 # latex version
 ARG pandoc_ver=3.3
 
-
-# RUN rm -rf /var/lib/apt/lists/*
-
 # Install general dependencies
 RUN apt-get -qq -y update
 RUN apt-get -qq -y --no-install-recommends install \
@@ -44,7 +41,7 @@ ENV PATH /opt/texbin:$PATH
 ENV PATH /usr/local/texlive/2024/bin/x86_64-linux:$PATH
 
 # Update texlive and texlive manager to the absolute
-RUN tlmgr update --self --all
+# RUN tlmgr update --self --all
 
 # Test Latex
 COPY examples/small2e.tex small2e.tex
