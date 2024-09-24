@@ -38,7 +38,7 @@ RUN rm -rf install-tl*
 
 # Export useful texlive paths
 ENV PATH /opt/texbin:$PATH
-ENV PATH /usr/local/texlive/2024/bin/x86_64-linux:$PATH
+ENV PATH /usr/local/texlive/2020/bin/x86_64-linux:$PATH
 
 # Update texlive and texlive manager to the absolute
 # RUN tlmgr update --self --all
