@@ -20,8 +20,8 @@ RUN apt-get -qq -y install curl wget build-essential zip python3-pip jq git libf
 # Install R
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 RUN add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
-RUN apt-get -y qq update
-RUN apt-get install -y qq r-base
+RUN apt-get -qq -y update
+RUN apt-get -qq -y install r-base
 # Install popular package bookdown and rmarkdown for document authoring
 RUN Rscript -e "install.packages('rmarkdown',repos='https://cran.rstudio.com');install.packages('bookdown',repos='https://cran.rstudio.com')"
 
