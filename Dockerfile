@@ -41,7 +41,7 @@ ENV PATH /opt/texbin:$PATH
 ENV PATH /usr/local/texlive/2020/bin/x86_64-linux:$PATH
 
 # Update texlive and texlive manager to the absolute
-# RUN tlmgr update --self --all
+RUN tlmgr update --self --all
 
 # Test Latex
 COPY examples/small2e.tex small2e.tex
